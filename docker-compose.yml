@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:15  # Stable version; adjustable.
+    restart: always
+    environment:
+      POSTGRES_USER: directus_user
+      POSTGRES_PASSWORD: parsar20252025  # Use a strong one.
+      POSTGRES_DB: taskmaster_db
+    ports:
+      - "5432:5432"  # Maps container port to host.
+    volumes:
+      - db_data:/var/lib/postgresql/data  # Persists data outside container.
+
+  directus:
+    image: directus/directus:latest  # Latest stable as of 2026; check directus.io for updates.
+    restart: always
+    ports:
+      - "8055:8055"
+    volumes:
+      - ./uploads:/directus/uploads:Z,U  # For file storage.
+    environment:
+      KEY: '91e44e068ea2056db47b2e9f38c4858b611967ff25099c6a41f5ac78098d2d66'  # Generate with openssl rand -hex 32.
+      SECRET: '91e44e068ea2056db47b2e9f38c4858b611967ff25099c6a41f5ac78098d2d66'  # Same.
+      DB_CLIENT: 'pg'
+      DB_HOST: 'database'  # Links to the DB service.
+      DB_PORT: '5432'
+      DB_DATABASE: 'taskmaster_db'
+      DB_USER: 'directus_user'
+      DB_PASSWORD: 'parsar20252025'
+      ADMIN_EMAIL: 'parsar2025@gmail.com'
+      ADMIN_PASSWORD: 'parsar20252025'
+      STORAGE_LOCATIONS: local
+      STORAGE_LOCAL_DRIVER: local
+      STORAGE_LOCAL_ROOT: /directus/uploads
+    depends_on:
+      - database
+    user: "1000:1000"
+
+volumes:
+  db_data:
