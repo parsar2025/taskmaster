@@ -103,20 +103,6 @@ MIT – feel free to fork, learn, adapt.
 Made with ❤️ for learning Directus + databases + containers.
 
 Questions? Open an issue!
-```
 
-### Next Actions
-
-1. Create/update `README.md` with the content above (edit YOUR_USERNAME, emails, etc.).
-2. Commit everything:
-   ```bash
-   git add .
-   git commit -m "Final phase 1-4 commit: full schema + permissions exports, professional README, clean structure"
-   git tag -a v1.0-complete -m "v1.0 – Fully documented multi-user task manager with Directus v11"
-   ```
-
-3. Push to GitHub (if remote exists):
-   ```bash
-   git push origin main
-   git push origin --tags
-   ```
+Or be in touch:
+parsar2025@gmail.com
