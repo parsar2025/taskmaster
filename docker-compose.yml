@@ -34,6 +34,7 @@ services:
       STORAGE_LOCATIONS: local
       STORAGE_LOCAL_DRIVER: local
       STORAGE_LOCAL_ROOT: /directus/uploads
+      FLOWS_EXEC_ALLOWED_DOMAINS: "*"
     depends_on:
       - database
     user: "1000:1000"
